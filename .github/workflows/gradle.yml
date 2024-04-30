@@ -32,5 +32,5 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew -PversionSuffix="-SNAPSHOT" -PbuildNumber="${buildNumber}" build publishMavenPublicationToGitHubPackagesRepository --no-daemon --stacktrace
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        buildNumber: ${{ github.run_number }}
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
