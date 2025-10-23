@@ -15,6 +15,13 @@ subprojects {
 
 	repositories {
 		mavenLocal()
+		maven {
+			url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_ACTOR")}/rsocket-broker-client")
+			credentials {
+				username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+				password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+			}
+		}
 		mavenCentral()
 		maven { url 'https://repo.spring.io/milestone' }
 		if (version.endsWith('SNAPSHOT')) {
