@@ -16,17 +16,9 @@
 
 package io.rsocket.broker.client.spring;
 
-import java.net.URI;
+import static io.rsocket.broker.client.spring.BrokerClientProperties.CONFIG_PREFIX;
 
-import io.rsocket.RSocket;
-import io.rsocket.broker.common.spring.ClientTransportFactory;
-import io.rsocket.broker.common.spring.DefaultClientTransportFactory;
-import io.rsocket.broker.common.spring.MimeTypes;
-import io.rsocket.broker.frames.RouteSetup;
-import io.rsocket.transport.ClientTransport;
-import reactor.core.Disposable;
-import reactor.core.publisher.Sinks;
-import reactor.core.publisher.Sinks.One;
+import java.net.URI;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -34,7 +26,7 @@ import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.rsocket.RSocketRequesterAutoConfiguration;
+import org.springframework.boot.rsocket.autoconfigure.RSocketRequesterAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,7 +37,15 @@ import org.springframework.messaging.rsocket.RSocketStrategies;
 import org.springframework.messaging.rsocket.annotation.support.RSocketMessageHandler;
 import org.springframework.util.CollectionUtils;
 
-import static io.rsocket.broker.client.spring.BrokerClientProperties.CONFIG_PREFIX;
+import io.rsocket.RSocket;
+import io.rsocket.broker.common.spring.ClientTransportFactory;
+import io.rsocket.broker.common.spring.DefaultClientTransportFactory;
+import io.rsocket.broker.common.spring.MimeTypes;
+import io.rsocket.broker.frames.RouteSetup;
+import io.rsocket.transport.ClientTransport;
+import reactor.core.Disposable;
+import reactor.core.publisher.Sinks;
+import reactor.core.publisher.Sinks.One;
 
 
 @Configuration

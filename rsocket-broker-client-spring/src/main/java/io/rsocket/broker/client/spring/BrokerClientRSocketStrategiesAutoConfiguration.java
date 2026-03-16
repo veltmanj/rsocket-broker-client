@@ -16,17 +16,17 @@
 
 package io.rsocket.broker.client.spring;
 
-import io.rsocket.broker.common.spring.BrokerFrameDecoder;
-import io.rsocket.broker.common.spring.BrokerFrameEncoder;
+import static io.rsocket.broker.client.spring.BrokerClientProperties.CONFIG_PREFIX;
 
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.rsocket.RSocketStrategiesAutoConfiguration;
+import org.springframework.boot.rsocket.autoconfigure.RSocketStrategiesAutoConfiguration;
 import org.springframework.boot.rsocket.messaging.RSocketStrategiesCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static io.rsocket.broker.client.spring.BrokerClientProperties.CONFIG_PREFIX;
+import io.rsocket.broker.common.spring.BrokerFrameDecoder;
+import io.rsocket.broker.common.spring.BrokerFrameEncoder;
 
 @Configuration
 @ConditionalOnProperty(name = CONFIG_PREFIX + ".enabled", matchIfMissing = true)
