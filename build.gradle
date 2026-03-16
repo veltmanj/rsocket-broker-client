@@ -20,9 +20,10 @@ subprojects {
 	repositories {
 		mavenLocal()
 		maven {
-			url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_ACTOR")}/rsocket-broker-client")
+			def githubRepositoryOwner = System.getenv("GITHUB_REPOSITORY_OWNER") ?: System.getenv("GITHUB_ACTOR")
+			url = uri("https://maven.pkg.github.com/${githubRepositoryOwner}/rsocket-broker-client")
 			credentials {
-				username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+				username = project.findProperty("gpr.user") ?: githubRepositoryOwner
 				password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
 			}
 		}

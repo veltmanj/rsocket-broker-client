@@ -5,8 +5,13 @@ on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
 
     steps:
       - uses: actions/checkout@v5

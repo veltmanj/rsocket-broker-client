@@ -13,6 +13,8 @@ jobs:
       packages: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
 
     steps:
       - uses: actions/checkout@v5
@@ -31,5 +33,4 @@ jobs:
       - name: Publish to GitHub Packages
         run: ./gradlew -PversionSuffix="-SNAPSHOT" -PbuildNumber="${buildNumber}" build publishMavenPublicationToGitHubPackagesRepository --no-daemon --stacktrace
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           buildNumber: ${{ github.run_number }}
