@@ -26,8 +26,8 @@ import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.rsocket.autoconfigure.RSocketRequesterAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.rsocket.autoconfigure.RSocketRequesterAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -48,6 +48,13 @@ import reactor.core.publisher.Sinks;
 import reactor.core.publisher.Sinks.One;
 
 
+/**
+ * Spring Boot auto-configuration for the RSocket Broker client. Creates
+ * {@link BrokerRSocketRequesterBuilder}, configures the RSocket connector with broker
+ * setup metadata, and optionally auto-connects to the first configured broker URI.
+ *
+ * @see BrokerClientProperties
+ */
 @Configuration
 @EnableConfigurationProperties
 @ConditionalOnClass({RSocket.class, RSocketRequester.class})
